@@ -1,0 +1,61 @@
+file:
+  /home/node/app:
+    exists: true
+    mode: "2755"
+    size: 4096
+    owner: node
+    group: node
+    filetype: directory
+    contains: []
+  # Seems like the .dockerignore is not being rendered by our plugin.
+  # /home/node/app/.dockerignore:
+  #   exists: true
+  #   mode: "0644"
+  #   size: 52
+  #   owner: node
+  #   group: node
+  #   filetype: file
+  #   contains: []
+  /home/node/app/Dockerfile:
+    exists: true
+    mode: "0644"
+    size: 352
+    owner: node
+    group: node
+    filetype: file
+    contains: []
+  /home/node/app/docker-compose.yml:
+    exists: true
+    mode: "0644"
+    size: 350
+    owner: node
+    group: node
+    filetype: file
+    contains: []
+user:
+  node:
+    exists: true
+    uid: 1000
+    gid: 1000
+    groups:
+    - node
+    home: /home/node
+    shell: /bin/sh
+  root:
+    exists: true
+    uid: 0
+    gid: 0
+    groups:
+    - adm
+    - bin
+    - daemon
+    - dialout
+    - disk
+    - floppy
+    - root
+    - sys
+    - tape
+    - video
+    - wheel
+    home: /root
+    shell: /bin/ash

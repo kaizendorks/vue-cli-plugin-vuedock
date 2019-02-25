@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 volumes:
   node_modules: null
@@ -14,8 +14,8 @@ services:
     volumes:
       - ./:/home/node/app/
       - /home/node/.npm
-      - 'node_modules:/home/node/app/node_modules'
-    command: 'bash -c "npm run serve"'
+      - node_modules:/home/node/app/node_modules
+    command: 'sh -c "npm run serve"'
     environment:
       - NODE_ENV=dev
 <% if (hasNightwatch) { _%>
@@ -24,19 +24,19 @@ services:
     build:
       context: .
       dockerfile: base
-    command: 'bash -c "npm run test:e2e"'
+    command: 'sh -c "npm run test:e2e"'
     environment:
       - 'LAUNCH_URL=http://app:8080'
       - SELENIUM_HOST=selenium-chrome
       - SELENIUM_PORT=4444
     volumes:
-      - './:/home/node/app'
+      - ./:/home/node/app
       - /home/node/.npm
-      - 'node_modules:/home/node/app/node_modules'
+      - node_modules:/home/node/app/node_modules
     depends_on:
       app:
         condition: service_started
-  
+
   selenium-chrome:
     image: selenium/standalone-chrome
     expose:

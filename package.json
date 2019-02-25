@@ -23,7 +23,7 @@
     "vue-cli",
     "vue-cli-plugin"
   ],
-  "author": "kaizen dorks dublin",
+  "author": "Kaizen Dorks <kaizendorks@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kaizendorks/vue-cli-plugin-vuedock/issues"
