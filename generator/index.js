@@ -1,11 +1,7 @@
-module.exports = (api) => {
-  const hasNightwatch = api.hasPlugin('e2e-nightwatch');
-
-  const options = {
-    // TODO: e2e-cypress
-    hasNightwatch
-  };
+module.exports = (api, options) => {
+  options.hasNightwatch = api.hasPlugin('e2e-nightwatch');
 
   api.render('./template/default', options);
-  if (hasNightwatch) api.render('./template/e2e-nightwatch', options);
+  if (options.hasNightwatch) api.render('./template/e2e-nightwatch', options);
+  if (options.addDgossTests) api.render('./template/dgoss', options);
 };

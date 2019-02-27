@@ -70,13 +70,13 @@ vuedock docker build -t app .
 
 # Run prod app dgoss tests
 docker run --rm -it \
-  -v "$(pwd)/generator/template/default":/src \
+  -v "$(pwd)/generator/template/dgoss":/src \
   -v /var/run/docker.sock:/var/run/docker.sock \
 iorubs/dgoss run app
 
 # Edit prod app dgoss tests
 docker run --rm -it \
-  -v "$(pwd)/generator/template/default":/src \
+  -v "$(pwd)/generator/template/dgoss":/src \
   -v /var/run/docker.sock:/var/run/docker.sock \
 iorubs/dgoss edit app
 ```
