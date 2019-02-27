@@ -3,18 +3,22 @@
 
 [![Build Status](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock.svg?branch=master)](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock)
 
+## Instructions
+
+#### Description
 Generates docker and compose files for both development and hosting, allowing:
 - running the development server
 - running unit tests
 - running nightwatch e2e tests
 - hosting built application with nginx container
 
-## Installation in a Vue project
+#### Installation in a Vue project
 Simply run from the project root:
 ```vue add vuedock```
 
 For more information, see: https://cli.vuejs.org/guide/plugins-and-presets.html#installing-plugins-in-an-existing-project
-## Instructions
+
+## Contributing
 
 #### Development
 
@@ -40,6 +44,8 @@ vue create -d app \
 ```
 
 #### CI
+
+Goss is tool for validating server’s configuration (avoid conf. drift). Dgoss is wrapper written on top of the goss for validating docker images. https://github.com/aelsabbahy/goss/tree/master/extras/dgoss
 
 ``` bash
 # Build image
@@ -80,3 +86,4 @@ iorubs/dgoss edit app
 1. Add yarn support
 1. Extensive testing with different create app inputs
 1. Add express support
+1. Move Contributing sections somewhere else
