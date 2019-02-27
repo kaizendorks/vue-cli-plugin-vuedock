@@ -45,7 +45,8 @@ vue create -d app \
 
 #### CI
 
-Goss is tool for validating server’s configuration (avoid conf. drift). Dgoss is wrapper written on top of the goss for validating docker images. https://github.com/aelsabbahy/goss/tree/master/extras/dgoss
+Goss is tool for validating server’s configuration (avoid conf. drift). Dgoss is a wrapper written on top of goss for validating docker images.
+https://github.com/aelsabbahy/goss/tree/master/extras/dgoss
 
 ``` bash
 # Build image

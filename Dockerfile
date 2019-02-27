@@ -25,7 +25,7 @@ RUN  vue create -d app
 COPY --chown=node:node . ./vuedock
 WORKDIR /home/node/app
 RUN npm install --save-dev file:/home/node/vuedock \
-    && vue invoke vue-cli-plugin-vuedock \
+    && vue invoke vue-cli-plugin-vuedock -d \
     && rm -rf package.json package-lock.json node_modules \
     && touch package-lock.json
 

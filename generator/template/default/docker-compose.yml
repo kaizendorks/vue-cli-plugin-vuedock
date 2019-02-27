@@ -8,28 +8,28 @@ services:
     build:
       context: .
       target: dev
+    environment:
+      - NODE_ENV=dev
+    command: 'npm run serve'
+    restart: always
     ports:
       - "8080:8080"
-    restart: always
     volumes:
       - ./:/home/node/app/
       - /home/node/.npm
       - node_modules:/home/node/app/node_modules
-    command: 'npm run serve'
-    environment:
-      - NODE_ENV=dev
 <% if (hasNightwatch) { _%>
 
   test:
     build:
       context: .
       target: dev
-    # Add script to wait for app and selinium
-    command: 'sh -c "sleep 5 && pm run test:e2e"'
     environment:
-      - 'LAUNCH_URL=http://app:8080'
+      - LAUNCH_URL=http://app:8080
       - SELENIUM_HOST=selenium-chrome
       - SELENIUM_PORT=4444
+    # Add script to wait for app and selinium
+    command: 'sleep 5 && npm run test:e2e'
     volumes:
       - ./:/home/node/app
       - /home/node/.npm
@@ -43,5 +43,5 @@ services:
     expose:
       - 4444
     ports:
-      - '5901:5900'
+      - "5901:5900"
 <% } _%>
