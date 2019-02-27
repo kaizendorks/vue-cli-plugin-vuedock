@@ -3,6 +3,17 @@
 
 [![Build Status](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock.svg?branch=master)](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock)
 
+Generates docker and compose files for both development and hosting, allowing:
+- running the development server
+- running unit tests
+- running nightwatch e2e tests
+- hosting built application with nginx container
+
+## Installation in a Vue project
+Simply run from the project root:
+```vue add vuedock```
+
+For more information, see: https://cli.vuejs.org/guide/plugins-and-presets.html#installing-plugins-in-an-existing-project
 ## Instructions
 
 #### Development
