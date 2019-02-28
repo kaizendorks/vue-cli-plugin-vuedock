@@ -1,33 +1,20 @@
 # BASE
-FROM node:11-alpine as base
+FROM node:11-alpine as dev
 
 LABEL maintainer="https://github.com/kaizendorks"
 
-RUN mkdir /home/node/app
 WORKDIR /home/node/app
 
-COPY client/package.json client/package-lock.json
+COPY package.json package-lock.json ./
 RUN npm install
 
 # BUILD STAGE
-FROM base as build
+FROM dev as build
 
-COPY client/ .
+COPY . .
 RUN npm run build
 
 # SERVE STAGE
-# TODO: shouldnt this be an nginx-like image and just copy the resulting "/dist" folder from the build?
-FROM node:11-alpine
+FROM nginx:1.14-alpine as prod
 
-USER node
-
-RUN mkdir /home/node/app
-WORKDIR /home/node/app
-
-COPY client/package.json client/package-lock.json ./
-RUN npm install
-
-COPY --chown=node:node server/ .
-COPY --chown=node:node --from=build /app/dist ./dist
-
-CMD ["npm", "start"]
+COPY --from=build /home/node/app/dist /usr/share/nginx/html

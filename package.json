@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-vuedock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue CLI 3 plugin for adding dev/prod docker and compose files",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "vue-cli",
     "vue-cli-plugin"
   ],
-  "author": "kaizen dorks dublin",
+  "author": "Kaizen Dorks <kaizendorks@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kaizendorks/vue-cli-plugin-vuedock/issues"

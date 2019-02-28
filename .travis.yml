@@ -1,0 +1,35 @@
+language: node_js
+node_js: "stable"
+
+services:
+  - docker
+
+install:
+  - docker build -t vuedock .
+  - npm install
+
+script:
+  - npm run eslint .
+  - |
+    docker run --rm -it \
+      -v "$(pwd)/test":/src \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+    iorubs/dgoss run vuedock
+  - |
+    # Try building generated dockerfiles
+    docker run --rm -it \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+    vuedock docker build -t app .
+    # Run prod app dgoss tests
+    docker run --rm -it \
+      -v "$(pwd)/generator/template/dgoss":/src \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+    iorubs/dgoss run app
+
+deploy:
+  provider: script
+  script:
+    - "cp .npmrc.template $HOME/.npmrc && npm publish"
+  skip_cleanup: true
+  on:
+    branch: master
