@@ -27,7 +27,7 @@ RUN yarn build
 RUN npm run build
 <% } _%>
 
-# PROD: Optipised distribution with no dev dependecies.
+# PROD: Production optimized distribution with NO dev dependencies.
 FROM nginx:1.14-alpine as prod
 
 COPY --from=build /home/node/app/dist /usr/share/nginx/html
