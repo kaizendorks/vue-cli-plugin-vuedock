@@ -1,8 +1,8 @@
 module.exports = [
   {
-    name: `addDgossTests`,
+    name: 'addDgossTests',
     type: 'confirm',
     message: 'Add dgoss tests?',
-    default: false
-  }
-]
+    default: false,
+  },
+];

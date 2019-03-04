@@ -1,13 +1,14 @@
 {
   "name": "vue-cli-plugin-vuedock",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vue CLI 3 plugin for adding dev/prod docker and compose files",
   "main": "index.js",
   "scripts": {
-    "eslint": "node ./node_modules/eslint --ext .js /",
+    "eslint": "node ./node_modules/.bin/eslint --ext .js .",
     "test": "npm run eslint"
   },
   "husky": {
+    "hookComments": "TODO: Should we remove this? it's very awkward for people developing in Docker.",
     "hooks": {
       "pre-commit": "npm test",
       "pre-push": "npm test"

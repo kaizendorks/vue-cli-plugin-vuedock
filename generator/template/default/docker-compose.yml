@@ -10,7 +10,6 @@ services:
       target: dev
     environment:
       - NODE_ENV=dev
-    command: 'npm run serve'
     restart: always
     ports:
       - "8080:8080"
@@ -28,8 +27,12 @@ services:
       - LAUNCH_URL=http://app:8080
       - SELENIUM_HOST=selenium-chrome
       - SELENIUM_PORT=4444
-    # Add script to wait for app and selinium
-    command: 'sleep 5 && npm run test:e2e'
+    # Todo: Maybe improve this by adding a script to wait for app and selinium
+<% if (usesYarn) { _%>
+    command: "sh -c 'sleep 5 && yarn test:e2e'"
+<% } else { _%>
+    command: "sh -c 'sleep 5 && npm run test:e2e'"
+<% } _%>
     volumes:
       - ./:/home/node/app
       - /home/node/.npm
@@ -38,10 +41,6 @@ services:
       - app
       - selenium-chrome
 
-  selenium-chrome:
+  selenium-chrome: #Docs: https://github.com/SeleniumHQ/docker-selenium/tree/master/StandaloneChrome
     image: selenium/standalone-chrome
-    expose:
-      - 4444
-    ports:
-      - "5901:5900"
 <% } _%>
