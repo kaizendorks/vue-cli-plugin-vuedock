@@ -140,7 +140,6 @@ iorubs/dgoss edit app
 ```
 
 ## Todo:
-1. Fix .dockerignore issue
 1. Add E2E test support
 1. Add express support
 1. Move Contributing sections somewhere else or not?

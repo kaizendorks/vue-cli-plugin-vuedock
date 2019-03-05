@@ -7,15 +7,14 @@ file:
     group: node
     filetype: directory
     contains: []
-  # Seems like the .dockerignore is not being rendered by our plugin.
-  # /home/node/app/.dockerignore:
-  #   exists: true
-  #   mode: "0644"
-  #   size: 52
-  #   owner: node
-  #   group: node
-  #   filetype: file
-  #   contains: []
+  /home/node/app/.dockerignore:
+    exists: true
+    mode: "0644"
+    size: 92
+    owner: node
+    group: node
+    filetype: file
+    contains: []
   /home/node/app/Dockerfile:
     exists: true
     mode: "0644"
