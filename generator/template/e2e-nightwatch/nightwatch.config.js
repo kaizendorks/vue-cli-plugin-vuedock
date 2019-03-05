@@ -3,12 +3,12 @@
 // and instead will use the selenium-chrome docker image
 
 module.exports = {
-  
   selenium: {
-    start_process: process.env.SELENIUM_HOST ? false : true,    
-    start_session:  true,    
+    // eslint-disable-next-line no-unneeded-ternary
+    start_process: process.env.SELENIUM_HOST ? false : true,
+    start_session: true,
     host: process.env.SELENIUM_HOST || '127.0.0.1',
-    port: process.env.SELENIUM_PORT || 4444,    
+    port: process.env.SELENIUM_PORT || 4444,
   },
 
   test_settings: {
@@ -16,16 +16,15 @@ module.exports = {
       launch_url: process.env.LAUNCH_URL || 'http://localhost:8080',
       selenium_port: process.env.SELENIUM_PORT || 4444,
       selenium_host: process.env.SELENIUM_HOST || 'localhost',
-      silent: true
+      silent: true,
     },
 
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,
-        acceptSslCerts: true
-      }
-    }
-
-  }
+        acceptSslCerts: true,
+      },
+    },
+  },
 };
