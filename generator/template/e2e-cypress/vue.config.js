@@ -2,7 +2,7 @@
 module.exports = {
   configureWebpack: {
     devServer: {
-      disableHostCheck: true
-    }
-  }
-}
+      disableHostCheck: true,
+    },
+  },
+};
