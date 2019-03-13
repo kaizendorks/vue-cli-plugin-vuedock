@@ -30,7 +30,12 @@ For more information, see: https://cli.vuejs.org/guide/plugins-and-presets.html#
 
         docker-compose run --rm app yarn test:unit
 
-1. **Run E2E Tests (Currently not working):**
+1. Run E2E Tests **(Currently only supports Cypress):**
+
+        # Run tests, this will also run the app container.
+        docker-compose run --rm test_e2e
+        # To clean up
+        docker-compose down
 
 #### Usage: CI Server (Example using NPM)
 
@@ -46,7 +51,14 @@ For more information, see: https://cli.vuejs.org/guide/plugins-and-presets.html#
 
         docker run --rm vueapp npm run test:unit
 
-1. **Run E2E Tests (Currently not working)**:
+1. Run E2E Tests **(Currently only supports Cypress):**
+
+        # Run tests, this will also run the app container.
+        docker-compose run --rm test_e2e
+        # To clean up
+        docker-compose down
+
+1. **Note:** You can update the E2E tests to point at any running site by changing the CYPRESS_baseUrl environment variable passed into the container. That ability means that this would also be a great basis for implementing some very complex and cool delivery and rollback pipelines.
 
 1. Build you production image:
 
@@ -140,6 +152,6 @@ iorubs/dgoss edit app
 ```
 
 ## Todo:
-1. Add E2E test support
+1. Add E2E Nightwatch test support
 1. Add express support
 1. Move Contributing sections somewhere else or not?
