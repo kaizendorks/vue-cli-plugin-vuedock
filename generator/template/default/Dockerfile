@@ -1,5 +1,5 @@
-# DEV: Contains only dependecies, code is mapped in at runtime
-FROM node:11-alpine as dev
+# DEV: Contains only dependencies, code is mapped in at runtime
+FROM node:11.10-alpine as dev
 
 LABEL maintainer="https://github.com/kaizendorks"
 
@@ -17,7 +17,7 @@ RUN npm install
 CMD ["npm", "run", "serve"]
 <% } _%>
 
-# BUILD: Contains all dependecies and code, making it a good target for CI jobs
+# BUILD: Contains all dependencies and code, making it a good target for CI jobs
 FROM dev as build
 
 COPY . .
