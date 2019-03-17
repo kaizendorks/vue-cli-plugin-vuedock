@@ -38,7 +38,7 @@ services:
 <% } _%>
 <% if (hasNightwatch) { _%>
 
-  test:
+  test_e2e:
     build:
       context: .
       target: dev
@@ -48,9 +48,9 @@ services:
       - SELENIUM_PORT=4444
     # Todo: Maybe improve this by adding a script to wait for app and selinium
 <% if (usesYarn) { _%>
-    command: "sh -c 'sleep 5 && yarn test:e2e'"
+    command: "sh -c 'sleep 5 && yarn test:e2e -- --url http://app:8080'"
 <% } else { _%>
-    command: "sh -c 'sleep 5 && npm run test:e2e'"
+    command: "sh -c 'sleep 5 && npm run test:e2e -- --url http://app:8080'"
 <% } _%>
     volumes:
       - ./:/home/node/app
@@ -62,4 +62,8 @@ services:
 
   selenium-chrome: #Docs: https://github.com/SeleniumHQ/docker-selenium/tree/master/StandaloneChrome
     image: selenium/standalone-chrome
+    expose:
+      - 4444
+    # ports:
+    # - '5900:5900' # expose debug port if needed
 <% } _%>
