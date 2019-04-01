@@ -10,7 +10,6 @@ module.exports = (api, options) => {
   options.usesYarn = fs.existsSync('./yarn.lock');
 
   api.render('./template/default', options);
-  if (options.hasNightwatch || options.hasCypress) api.render('./template/e2e-common', options);
   if (options.hasNightwatch) api.render('./template/e2e-nightwatch', options);
   if (options.addDgossTests) api.render('./template/dgoss', options);
 };
