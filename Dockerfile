@@ -1,36 +1,30 @@
-# Todo: Create cli image and use it here: E.g FROM kaizendorks/vue:3
-FROM node:11-alpine AS vuecli
+FROM kaizendorks/vue:3 AS development
 
 LABEL maintainer="https://github.com/kaizendorks"
-
-RUN npm install -g @vue/cli@^3.0.0 \
-    && vue --version
-
-USER node
-WORKDIR /home/node
-
-CMD ["vue"]
-
-FROM vuecli AS ci
-
-USER root
 
 RUN apk upgrade \
     && apk add docker
 
+FROM development AS ci
+
+WORKDIR /home/node
 USER node
 
-# Create a sample app and install vuedock
+# Create a sample app
 RUN  vue create app -i '{"useConfigFiles": true, "plugins": {"@vue/cli-plugin-unit-jest": {}}}'
-COPY --chown=node:node . ./vuedock
 WORKDIR /home/node/app
-RUN yarn add --dev file:/home/node/vuedock \
+
+# Install vuedock
+COPY . /vuedock
+
+# TODO: open an Issue/PR in the vue-cli repo, so "vue invoke" can make use of optionalDependencies, currently we see:
+# Error: Cannot resolve plugin vue-cli-plugin-vuedock from package.json. Did you forget to install it?
+# This would allows us to remove the dummy package.json
+RUN yarn add --dev file:/vuedock \
     && vue invoke vue-cli-plugin-vuedock -d \
     && rm -rf package.json node_modules
-
 COPY ./test/package.json ./package.json
 
 USER root
-
 # Hack around to dgoss test short living images
 CMD ["sleep", "1d"]
