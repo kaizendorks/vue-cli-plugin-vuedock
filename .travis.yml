@@ -16,7 +16,13 @@ script:
       -v /var/run/docker.sock:/var/run/docker.sock \
     iorubs/dgoss run vuedock
   - |
-    # Try building generated dockerfiles
+    # Run default Vue unit tests
+    docker run --rm -it \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+    vuedock docker build --target build -t vueapp .
+    docker run --rm vueapp yarn test:unit
+  - |
+    # Validate production container
     docker run --rm -it \
       -v /var/run/docker.sock:/var/run/docker.sock \
     vuedock docker build -t app .

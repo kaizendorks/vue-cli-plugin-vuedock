@@ -2,13 +2,17 @@
   "name": "app",
   "version": "0.1.0",
   "scripts": {
-    "build": "vue-cli-service build"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "vue": "^2.6.6"
   },
   "devDependencies": {
-    "@vue/cli-service": "^3.4.0",
+    "@vue/cli-plugin-unit-jest": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/test-utils": "1.0.0-beta.29",
     "vue-template-compiler": "^2.5.21"
   }
 }

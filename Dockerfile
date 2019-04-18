@@ -1,5 +1,5 @@
 # Todo: Create cli image and use it here: E.g FROM kaizendorks/vue:3
-FROM node:11-alpine as vuecli
+FROM node:11-alpine AS vuecli
 
 LABEL maintainer="https://github.com/kaizendorks"
 
@@ -11,27 +11,26 @@ WORKDIR /home/node
 
 CMD ["vue"]
 
-FROM vuecli as ci
+FROM vuecli AS ci
 
-user root
+USER root
 
 RUN apk upgrade \
     && apk add docker
 
-user node
+USER node
 
 # Create a sample app and install vuedock
-RUN  vue create -d app
+RUN  vue create app -i '{"useConfigFiles": true, "plugins": {"@vue/cli-plugin-unit-jest": {}}}'
 COPY --chown=node:node . ./vuedock
 WORKDIR /home/node/app
 RUN yarn add --dev file:/home/node/vuedock \
     && vue invoke vue-cli-plugin-vuedock -d \
-    && rm -rf package.json package-lock.json node_modules \
-    && touch package-lock.json
+    && rm -rf package.json node_modules
 
 COPY ./test/package.json ./package.json
 
-user root
+USER root
 
 # Hack around to dgoss test short living images
 CMD ["sleep", "1d"]

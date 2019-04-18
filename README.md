@@ -191,7 +191,15 @@ docker run --rm -it \
   -v /var/run/docker.sock:/var/run/docker.sock \
 iorubs/dgoss edit vuedock
 
-# Try building generated dockerfiles
+# Try building local dev dockerfiles
+docker run --rm -it \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+vuedock docker build --target build -t vueapp .
+
+# Run unit tests
+docker run --rm vueapp yarn test:unit
+
+# Try building prod container
 docker run --rm -it \
   -v /var/run/docker.sock:/var/run/docker.sock \
 vuedock docker build -t app .
