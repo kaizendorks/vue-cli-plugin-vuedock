@@ -16,8 +16,8 @@ Contents
 - [Usage](#usage)
     - [Usage in development](#usage-in-development)
     - [Usage in CI servers](#usage-in-ci-servers)
-    - [Usage in production](#usage-in-prod)
-- [Contributing](#contributingsage)
+    - [Usage in production](#usage-in-production)
+- [Contributing](#contributing)
     - [Development in your local environment](#development-in-your-local-environment)
     - [Development in a dockerized environment](#development-in-a-dockerized-environment)
     - [CI](#ci)
@@ -147,11 +147,12 @@ Dockerized vue-cli
 
 ``` bash
 # Build image
-docker build -t vuedock --target vuecli .
+docker build -t vuedock --target development .
 
 # Run a shell inside the dev container
 docker run --rm -it \
   -v "$(pwd)":/vuedock \
+  -v /var/run/docker.sock:/var/run/docker.sock \
 vuedock sh
 
 # Create sample app
@@ -168,6 +169,10 @@ yarn add --dev file:/vuedock
 
 # Run plugin
 vue invoke vue-cli-plugin-vuedock
+
+# To build and run app as normal you have to remove a line from package.json ("vue-cli-plugin-vuedock": "file:/vuedock") E.g:
+docker build --target build -t vueapp .
+docker run --rm vueapp yarn test:unit
 ```
 
 ### CI
@@ -191,12 +196,12 @@ docker run --rm -it \
   -v /var/run/docker.sock:/var/run/docker.sock \
 iorubs/dgoss edit vuedock
 
-# Try building local dev dockerfiles
+# Build generated dockerfiles
 docker run --rm -it \
   -v /var/run/docker.sock:/var/run/docker.sock \
 vuedock docker build --target build -t vueapp .
 
-# Run unit tests
+# Run default Vue unit tests
 docker run --rm vueapp yarn test:unit
 
 # Try building prod container
