@@ -1,5 +1,5 @@
 # VueDock
-> Docker plugin for the Vue CLI 3
+> Docker plugin for the Vue CLI 3 & 4
 
 [![Build Status](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock.svg?branch=master)](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock)
 
