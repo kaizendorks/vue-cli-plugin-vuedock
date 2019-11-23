@@ -18,7 +18,7 @@ file:
   /home/node/app/Dockerfile:
     exists: true
     mode: "0644"
-    size: 527
+    size: 524
     owner: node
     group: node
     filetype: file
