@@ -1,4 +1,4 @@
-FROM kaizendorks/vue:3 AS development
+FROM kaizendorks/vue:4 AS development
 
 LABEL maintainer="https://github.com/kaizendorks"
 

@@ -1,5 +1,5 @@
 # VueDock
-> Docker plugin for the Vue CLI 3
+> Docker plugin for the Vue CLI 3 & 4
 
 [![Build Status](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock.svg?branch=master)](https://travis-ci.org/kaizendorks/vue-cli-plugin-vuedock)
 
@@ -25,7 +25,10 @@ Contents
 ## Installation
 Run the following command from your project's root folder: `vue add vuedock`
 
-- For more information on how to add plugins to your project, see: https://cli.vuejs.org/guide/plugins-and-presets.html#installing-plugins-in-an-existing-project
+- For more information on how to add plugins to your project, see: <https://cli.vuejs.org/guide/plugins-and-presets.html#installing-plugins-in-an-existing-project>
+- Version info:
+	1. For Vue CLI 3 use vudock 1.x.x, tested with node 11.
+	1. For Vue CLI 4 use vudock 2.x.x, tested with node 12.
 
 This will generate the following files in your project root:
 
