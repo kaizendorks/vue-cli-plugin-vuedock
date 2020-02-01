@@ -12,6 +12,7 @@ USER node
 
 # Create a sample app
 RUN  vue create app -i '{"useConfigFiles": true, "plugins": {"@vue/cli-plugin-unit-jest": {}}}'
+RUN mkdir -p /home/node/app/node_modules
 WORKDIR /home/node/app
 
 # Install vuedock
