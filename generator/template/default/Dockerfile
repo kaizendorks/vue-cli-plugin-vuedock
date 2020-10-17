@@ -1,5 +1,5 @@
 # DEV: Contains only dependencies, code is mapped in at runtime
-FROM node:12.13-alpine as dev
+FROM node:14.14-alpine as dev
 
 LABEL maintainer="https://github.com/kaizendorks"
 

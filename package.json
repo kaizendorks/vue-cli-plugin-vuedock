@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-vuedock",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Vue CLI 3 & 4 plugin for adding dev/prod docker and compose files",
   "main": "index.js",
   "scripts": {
