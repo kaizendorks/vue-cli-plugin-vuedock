@@ -28,6 +28,6 @@ RUN npm run build
 <% } _%>
 
 # PROD: Production optimized distribution with NO dev dependencies.
-FROM nginx:1.14-alpine as prod
+FROM nginx:1.19-alpine as prod
 
 COPY --from=build /home/node/app/dist /usr/share/nginx/html
